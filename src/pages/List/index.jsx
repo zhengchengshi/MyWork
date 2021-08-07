@@ -13,6 +13,7 @@ export default class List extends Component {
     render() {
         //从App组件中接值
         const {todos,updateTodo,deleteTodo}= this.props
+        console.log(todos)
         return (
             <div>
                 <ul className="todo-main">

@@ -22,7 +22,7 @@ export default class Header extends Component {
                 return
             }
             //准备一个todo对象
-            const todoObj = {id:nanoid(),name:target.value,done:false}           
+            const todoObj = {id:nanoid(),title:target.value,done:false}           
             //将todoObj传递给父组件
             this.props.addTodo(todoObj)
             //console.log(target.value,keyCode)

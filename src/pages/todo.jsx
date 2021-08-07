@@ -3,15 +3,29 @@ import Header from './Header'
 import List from './List'
 import Footer from './Footer'
 import './todo.css'
+import axios from 'axios'
 export default class todo extends Component {
-    
     //状态初始化
     state = {todos:[
-        {id:'01',name:'吃饭',done:true},
-        {id:'02',name:'打代码',done:false},
-        {id:'03',name:'睡觉',done:true},
-        {id:'04',name:'逛街',done:false}
+        // 没网条件下的初始化
+        {id:'01',title:'吃饭',done:true},
+        {id:'02',title:'打代码',done:false},
+        {id:'03',title:'睡觉',done:true},
+        {id:'04',title:'逛街',done:false}
     ]}
+    componentDidMount(){
+        axios.get('https://jsonplaceholder.typicode.com/todos').then(
+            res=>{
+                const todosArr = res.data
+                const sliceArr = todosArr.slice(0,15)
+                this.setState({todos:sliceArr})
+                console.log(this.state.todos);
+            },
+            err=>{
+                console.log(err)
+            }
+        )
+    }
     /**addTodo用于添加一个todo，接受的参数是todos中的todo对象 */
     addTodo=(todoObj)=>{
         //获取原todo

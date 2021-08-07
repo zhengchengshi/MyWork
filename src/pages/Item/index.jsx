@@ -34,14 +34,14 @@ export default class Item extends Component {
     }
     render() {
         const{mouse}=this.state
-        const{name,done,id}=this.props
+        const{title,done,id}=this.props
         return (
             <div style={{backgroundColor:mouse?'#ddd':'white'}} onMouseEnter={this.handleMouse(true)} onMouseLeave={this.handleMouse(false)}>
                 <li>
                     <label>
                         {/**defaultChecked设置的值可以改变，checked选中后不可改 */}
                         <input type="checkbox" checked={done} onChange={this.changeCheck(id)}/>
-                        <span>{name}</span>
+                        <span>{title}</span>
                     </label>
                     <button onClick={()=>{this.handleDelete(id)}} className="btn btn-danger" style={{display:mouse?'block':'none'}}>删除</button>
                 </li>
